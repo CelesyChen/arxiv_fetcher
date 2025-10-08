@@ -30,9 +30,7 @@ def fetch_category(cat):
     else:
       summary = summary.strip()
 
-
-    # 作者：RSS 中用 dc:creator
-    authors = entry.get("dc:creator", "Unknown")
+    authors = entry.get("dc_creator", ["Unknown"])
     # 分类标签（category）
     category = entry.get("tags", [])
     if category:
@@ -44,7 +42,7 @@ def fetch_category(cat):
       "id": arxiv_id,
       "title": entry.get("title", "").strip(),
       "link": link,
-      "authors": authors,
+      "authors": format_authors(authors),
       "summary": summary,
       "category": category
     })
@@ -72,6 +70,16 @@ def generate_markdown(papers, date_str):
       lines.append(f"**作者**：{p['authors']}\n\n{p['summary']}\n")
       lines.append(f"\n#### {cat}\n")
   return "\n".join(lines)
+
+def format_authors(authors) -> str:
+  if len(authors) == 1:
+    return authors[0]
+
+  if len(authors) > 3:
+    display_authors = authors[:3]
+    return ", ".join(display_authors) + " et al."
+
+  return ", ".join(authors)
 
 def generate_html(papers):
   grouped = {}
