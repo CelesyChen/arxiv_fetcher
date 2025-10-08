@@ -31,7 +31,7 @@ def fetch_category(cat):
     else:
       summary = summary.strip()
 
-    authors: List[str] = entry.get("author", [])
+    authors= entry.get("author", "Unknown")
     # 分类标签（category）
     category = entry.get("tags", [])
     if category:
@@ -43,7 +43,7 @@ def fetch_category(cat):
       "id": arxiv_id,
       "title": entry.get("title", "").strip(),
       "link": link,
-      "authors": format_authors(authors),
+      "authors": authors,
       "summary": summary,
       "category": category
     })
@@ -60,7 +60,7 @@ def save_record(record):
     json.dump(sorted(list(record)), f, ensure_ascii=False, indent=2)
 
 def generate_markdown(papers, date_str):
-  lines = [f"# ArXiv 新论文更新（{date_str}）\n"]
+  lines = [f"# ArXiv 新论文更新（{date_str})\n"]
   grouped = {}
   for p in papers:
     grouped.setdefault(p["category"], []).append(p)
@@ -72,18 +72,18 @@ def generate_markdown(papers, date_str):
       lines.append(f"\n#### {cat}\n")
   return "\n".join(lines)
 
-def format_authors(authors: List[str] = []) -> str:
-  if len(authors) == 0:
-    return "Unknown"
+# def format_authors(authors: str) -> str:
+#   if len(authors) == 0:
+#     return "Unknown"
   
-  if len(authors) == 1:
-    return authors[0]
+#   if len(authors) == 1:
+#     return authors[0]
 
-  if len(authors) > 3:
-    display_authors = authors[:3]
-    return ", ".join(display_authors) + " et al."
+#   if len(authors) > 3:
+#     display_authors = authors[:3]
+#     return ", ".join(display_authors) + " et al."
 
-  return ", ".join(authors)
+#   return ", ".join(authors)
 
 def generate_html(papers):
   grouped = {}
