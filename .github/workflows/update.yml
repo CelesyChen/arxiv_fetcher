@@ -17,7 +17,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Run fetch script
-        run: python fetch.py
+        run: python3 fetcher.py
       - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
