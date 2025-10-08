@@ -25,6 +25,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add LATEST.md index.html record.json history/
+          git add README.md index.html record.json history/
           git commit -m "update: $(date -u)" || echo "No changes"
           git push
