@@ -5,6 +5,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 import json
 import os
+from typing import List 
 import re
 CATEGORIES = ["cs.CL", "cs.AR", "cs.DC"]
 NUM_ENTRIES = 20
@@ -30,7 +31,7 @@ def fetch_category(cat):
     else:
       summary = summary.strip()
 
-    authors = entry.get("author", ["Unknown"])
+    authors: List[str] = entry.get("author", [])
     # 分类标签（category）
     category = entry.get("tags", [])
     if category:
@@ -71,7 +72,10 @@ def generate_markdown(papers, date_str):
       lines.append(f"\n#### {cat}\n")
   return "\n".join(lines)
 
-def format_authors(authors) -> str:
+def format_authors(authors: List[str] = []) -> str:
+  if len(authors) == 0:
+    return "Unknown"
+  
   if len(authors) == 1:
     return authors[0]
 
