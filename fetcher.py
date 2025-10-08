@@ -30,7 +30,7 @@ def fetch_category(cat):
     else:
       summary = summary.strip()
 
-    authors = entry.get("dc_creator", ["Unknown"])
+    authors = entry.get("author", ["Unknown"])
     # 分类标签（category）
     category = entry.get("tags", [])
     if category:
