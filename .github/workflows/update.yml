@@ -28,3 +28,9 @@ jobs:
           git add README.md index.html record.json history/
           git commit -m "update: $(date -u)" || echo "No changes"
           git push
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+          publish_branch: gh-pages
