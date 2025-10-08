@@ -83,7 +83,7 @@ def generate_html(papers):
         f"<div><h3><a href='{html.escape(p['link'])}'>{html.escape(p['title'])}</a></h3>"
         f"<p><b>作者：</b>{html.escape(p['authors'])}</p>"
         f"<p>{html.escape(p['summary'])}</p>"
-        f"<h4>{cat}</h4></div><hr>"
+        f"<p><h4>{cat}</h4></p></div><hr>"
       )
   html_body = "\n".join(html_items)
   template = open("template.html", encoding="utf-8").read()
