@@ -7,7 +7,7 @@ import json
 import os
 from typing import List 
 import re
-CATEGORIES = ["cs.CL", "cs.AR", "cs.DC"]
+CATEGORIES = ["cs.PF", "cs.AR", "cs.DC", "cs.OS"]
 NUM_ENTRIES = 20
 HISTORY_DIR = Path("history")
 RECORD_FILE = Path("record.json")
@@ -72,27 +72,33 @@ def generate_markdown(papers, date_str):
       lines.append(f"\n#### {cat}\n")
   return "\n".join(lines)
 
-def generate_html(papers):
+def generate_html(papers, date_str):
   grouped = {}
   for p in papers:
     grouped.setdefault(p["category"], []).append(p)
   html_items = []
+  html_items.append(f"<h1>{date_str}</h1>")
+  total = 0
+  idx = 1
+  for _, group in grouped.items():
+    total += len(group)
   for cat, group in grouped.items():
     for p in group:
       html_items.append(
         f"<div><h3><a href='{html.escape(p['link'])}'>{html.escape(p['title'])}</a></h3>"
+        f"<p>{idx}/{total}</p>"
         f"<p><b>作者：</b>{html.escape(p['authors'])}</p>"
         f"<p>{html.escape(p['summary'])}</p>"
         f"<p><h4>{cat}</h4></p></div><hr>"
       )
+      idx += 1
   html_body = "\n".join(html_items)
   template = open("template.html", encoding="utf-8").read()
   return template.replace("{{CONTENT}}", html_body)
 
 if __name__ == "__main__":
   HISTORY_DIR.mkdir(exist_ok=True)
-  date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-  date_file = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+  date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
   existing = load_record()
   new_papers = []
@@ -114,11 +120,11 @@ if __name__ == "__main__":
       f.write(md_text)
 
     # 存档历史
-    hist_file = HISTORY_DIR / f"{date_file}.md"
+    hist_file = HISTORY_DIR / f"{date_str}.md"
     with open(hist_file, "w", encoding="utf-8") as f:
       f.write(md_text)
 
     # 生成 HTML 页面
-    html_text = generate_html(new_papers)
+    html_text = generate_html(new_papers, date_str)
     with open("index.html", "w", encoding="utf-8") as f:
       f.write(html_text)
