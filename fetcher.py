@@ -31,7 +31,6 @@ def fetch_category(cat):
     else:
       summary = summary.strip()
 
-    authors= entry.get("author", "Unknown")
     # 分类标签（category）
     category = entry.get("tags", [])
     if category:
@@ -43,7 +42,6 @@ def fetch_category(cat):
       "id": arxiv_id,
       "title": entry.get("title", "").strip(),
       "link": link,
-      "authors": authors,
       "summary": summary,
       "category": category
     })
@@ -72,18 +70,18 @@ def generate_markdown(papers, date_str):
       lines.append(f"\n#### {cat}\n")
   return "\n".join(lines)
 
-# def format_authors(authors: str) -> str:
-#   if len(authors) == 0:
-#     return "Unknown"
+def format_authors(authors: str) -> str:
+  if len(authors) == 0:
+    return "Unknown"
   
-#   if len(authors) == 1:
-#     return authors[0]
+  if len(authors) == 1:
+    return authors[0]
 
-#   if len(authors) > 3:
-#     display_authors = authors[:3]
-#     return ", ".join(display_authors) + " et al."
+  if len(authors) > 3:
+    display_authors = authors[:3]
+    return ", ".join(display_authors) + " et al."
 
-#   return ", ".join(authors)
+  return ", ".join(authors)
 
 def generate_html(papers):
   grouped = {}
@@ -91,13 +89,13 @@ def generate_html(papers):
     grouped.setdefault(p["category"], []).append(p)
   html_items = []
   for cat, group in grouped.items():
-    html_items.append(f"<h2>{cat}</h2>")
     for p in group:
       html_items.append(
         f"<div><h3><a href='{html.escape(p['link'])}'>{html.escape(p['title'])}</a></h3>"
         f"<p><b>作者：</b>{html.escape(p['authors'])}</p>"
         f"<p>{html.escape(p['summary'])}</p></div><hr>"
       )
+      html_items.append(f"<h4>{cat}</h4>")
   html_body = "\n".join(html_items)
   template = open("template.html", encoding="utf-8").read()
   return template.replace("{{CONTENT}}", html_body)
