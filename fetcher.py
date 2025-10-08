@@ -25,8 +25,14 @@ def fetch_category(cat):
     summary = re.sub(r"<.*?>", "", raw_desc)
     summary = summary.replace("\n", " ").replace("  ", " ").strip()
 
+    if "Abstract:" in summary:
+      summary = summary.split("Abstract:", 1)[1].strip()
+    else:
+      summary = summary.strip()
+
+
     # 作者：RSS 中用 dc:creator
-    authors = entry.get("dc_creator", "Unknown")
+    authors = entry.get("dc:creator", "Unknown")
     # 分类标签（category）
     category = entry.get("tags", [])
     if category:
@@ -60,10 +66,11 @@ def generate_markdown(papers, date_str):
   for p in papers:
     grouped.setdefault(p["category"], []).append(p)
   for cat, group in grouped.items():
-    lines.append(f"\n## {cat}\n")
+    # lines.append(f"\n## {cat}\n")
     for p in group:
       lines.append(f"### [{p['title']}]({p['link']})")
       lines.append(f"**作者**：{p['authors']}\n\n{p['summary']}\n")
+      lines.append(f"\n#### {cat}\n")
   return "\n".join(lines)
 
 def generate_html(papers):
