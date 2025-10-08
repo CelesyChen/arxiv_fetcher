@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 import feedparser
 import html
-import json
 from datetime import datetime, timezone
 from pathlib import Path
-
+import json
+import os
+import re
 CATEGORIES = ["cs.CL", "cs.AR", "cs.DC"]
 NUM_ENTRIES = 20
 HISTORY_DIR = Path("history")
@@ -15,18 +16,31 @@ def fetch_category(cat):
   feed = feedparser.parse(url)
   papers = []
   for entry in feed.entries[:NUM_ENTRIES]:
-    # 提取 arXiv ID
-    if "id" in entry:
-      arxiv_id = entry.id.split("/")[-1]
+    link = entry.get("link", "")
+    arxiv_id_match = re.search(r"arxiv\.org/abs/([0-9]+\.[0-9]+)", link)
+    arxiv_id = arxiv_id_match.group(1) if arxiv_id_match else link.split("/")[-1]
+
+    raw_desc = entry.get("description", "")
+    # 去掉 HTML 标签
+    summary = re.sub(r"<.*?>", "", raw_desc)
+    summary = summary.replace("\n", " ").replace("  ", " ").strip()
+
+    # 作者：RSS 中用 dc:creator
+    authors = entry.get("dc_creator", "Unknown")
+    # 分类标签（category）
+    category = entry.get("tags", [])
+    if category:
+      category = ", ".join([t["term"] for t in category if "term" in t])
     else:
-      arxiv_id = entry.link.split("/")[-1]
+      category = cat
+
     papers.append({
       "id": arxiv_id,
-      "title": entry.title,
-      "link": entry.link,
-      "authors": entry.get("author", "Unknown"),
-      "summary": entry.get("summary", "").replace("\n", " ").strip(),
-      "category": cat
+      "title": entry.get("title", "").strip(),
+      "link": link,
+      "authors": authors,
+      "summary": summary,
+      "category": category
     })
   return papers
 
@@ -90,7 +104,7 @@ if __name__ == "__main__":
 
     # 更新最新 Markdown
     md_text = generate_markdown(new_papers, date_str)
-    with open("LATEST.md", "w", encoding="utf-8") as f:
+    with open("README.md", "w", encoding="utf-8") as f:
       f.write(md_text)
 
     # 存档历史
