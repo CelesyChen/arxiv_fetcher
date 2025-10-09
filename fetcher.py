@@ -86,7 +86,7 @@ def generate_html(papers, date_str):
     for p in group:
       html_items.append(
         f"<div><h3><a href='{html.escape(p['link'])}'>{html.escape(p['title'])}</a></h3>"
-        f"<h3><a href='{html.escape(p['link'].replace('/abs/', '/pdf/'))}'> <b>[pdf]</b> </a></h3>"
+        f"<h3><a href='{html.escape(p['link'].replace('/abs/', '/pdf/'))}' target='_blank' rel='noopener noreferrer'> <b>[pdf]</b> </a></h3>"
         f"<p>{idx}/{total}</p>"
         f"<p><b>作者：</b>{html.escape(p['authors'])}</p>"
         f"<p>{html.escape(p['summary'])}</p>"
