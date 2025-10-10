@@ -2,7 +2,7 @@ name: Update Arxiv Papers
 
 on:
   schedule:
-    - cron: '0 1 * * *'  # 每天 UTC 1:00 自动执行
+    - cron: "0 3 * * *"  # 每天 UTC 3:00 自动执行
   workflow_dispatch:     # 允许手动触发（调试用）
   push:
     branches:
