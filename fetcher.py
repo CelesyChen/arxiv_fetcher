@@ -9,8 +9,8 @@ from typing import List
 import re
 CATEGORIES = ["cs.PF", "cs.AR", "cs.DC", "cs.OS"]
 NUM_ENTRIES = 20
-HISTORY_DIR = Path("history")
-RECORD_FILE = Path("record.json")
+HISTORY_DIR = Path("docs/history")
+RECORD_FILE = Path("docs/record.json")
 
 def fetch_category(cat):
   url = f"https://export.arxiv.org/rss/{cat}"
@@ -117,7 +117,7 @@ if __name__ == "__main__":
 
     # 更新最新 Markdown
     md_text = generate_markdown(new_papers, date_str)
-    with open("README.md", "w", encoding="utf-8") as f:
+    with open("docs/LATEST.md", "w", encoding="utf-8") as f:
       f.write(md_text)
 
     # 存档历史
@@ -127,5 +127,5 @@ if __name__ == "__main__":
 
     # 生成 HTML 页面
     html_text = generate_html(new_papers, date_str)
-    with open("index.html", "w", encoding="utf-8") as f:
+    with open("docs/index.html", "w", encoding="utf-8") as f:
       f.write(html_text)
