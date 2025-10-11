@@ -9,6 +9,7 @@ from typing import List
 import re
 CATEGORIES = ["cs.PF", "cs.AR", "cs.DC", "cs.OS"]
 NUM_ENTRIES = 20
+DOCS = Path("docs/")
 HISTORY_DIR = Path("docs/history")
 RECORD_FILE = Path("docs/record.json")
 
@@ -98,6 +99,8 @@ def generate_html(papers, date_str):
   return template.replace("{{CONTENT}}", html_body)
 
 if __name__ == "__main__":
+  
+  DOCS.mkdir(exist_ok=True)
   HISTORY_DIR.mkdir(exist_ok=True)
   date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
