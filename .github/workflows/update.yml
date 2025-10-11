@@ -1,8 +1,8 @@
-name: Update Arxiv Papers
+name: Update And Deploy
 
 on:
   schedule:
-    - cron: "0 3 * * *"  # 每天 UTC 3:00 自动执行
+    - cron: "0 0 * * *"  # 每天 UTC 0:00 自动执行
   workflow_dispatch:     # 允许手动触发（调试用）
   push:
     branches:
@@ -15,22 +15,22 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with: 
+          fetch-depth: 0
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+
       - name: Install dependencies
         run: pip install -r requirements.txt
+
       - name: Run fetch script
         run: python3 fetcher.py
-      - name: Commit changes
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add README.md index.html record.json history/
-          git commit -m "update: $(date -u)" || echo "No changes"
-          git push
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
