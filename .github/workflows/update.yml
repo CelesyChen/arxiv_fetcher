@@ -2,7 +2,7 @@ name: Update And Deploy
 
 on:
   schedule:
-    - cron: "0 0 * * *"  # 每天 UTC 0:00 自动执行
+    - cron: "0 4 * * *"  # 每天 UTC 4:00 自动执行
   workflow_dispatch:     # 允许手动触发（调试用）
   push:
     branches:
