@@ -15,10 +15,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout main
         uses: actions/checkout@v4
         with: 
+          ref: main
           fetch-depth: 0
+      
+      - name: Fetch records from gh-pages
+        run: |
+          git fetch origin gh-pages
+          git checkout origin/gh-pages -- record.json
+          mkdir -p docs
+          mv record.json docs/record.json
+          echo "✅ Pulled record.json from gh-pages"
+          ls -lh docs/
 
       - name: Set up Python
         uses: actions/setup-python@v5
