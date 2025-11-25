@@ -1,0 +1,129 @@
+# ArXiv 新论文更新（2025-11-25)
+
+### [An Introductory Study on the Power Consumption Overhead of ERC-4337 Bundlers](https://arxiv.org/abs/2511.16890)
+**作者**：Andrei Arusoaie, Claudiu-Nicu B\u{a}rbieru, Oana-Otilia Captarencu, Paul-Flavian Diac, Emanuel Onica, Cosmin-Nicolae V\^arlan
+
+Ethereum is currently the main blockchain ecosystem providing decentralised trust guarantees for applications ranging from finance to e-government. A common criticism of blockchain networks has been their energy consumption and operational costs. The switch from Proof-of-Work (PoW) protocol to Proof-of-Stake (PoS) protocol has significantly reduced this issue, though concerns remain, especially with network expansions via additional layers. The ERC-4337 standard is a recent proposal that facilitates end-user access to Ethereum-backed applications. It introduces a middleware called a bundler, operated as a third-party service, where part of its operational cost is represented by its power consumption. While bundlers have served over 500 million requests in the past two years, fewer than 15 official bundler providers exist, compared to over 100 regular Ethereum access providers. In this paper, we provide a first look at the active power consumption overhead that a bundler would add to an Ethereum access service. Using SmartWatts, a monitoring system leveraging Running Average Power Limit (RAPL) hardware interfaces, we empirically determine correlations between the bundler workload and its active power consumption.
+
+
+#### cs.PF, cs.NI
+
+### [Bench360: Benchmarking Local LLM Inference from 360{\deg}](https://arxiv.org/abs/2511.16682)
+**作者**：Linus Stuhlmann, Mauricio Fadel Argerich, Jonathan F\"urst
+
+Running large language models (LLMs) locally is becoming increasingly common. While the growing availability of small open-source models and inference engines has lowered the entry barrier, users now face an overwhelming number of configuration choices. Identifying an optimal configuration -- balancing functional and non-functional requirements -- requires substantial manual effort. While several benchmarks target LLM inference, they are designed for narrow evaluation goals and not user-focused. They fail to integrate relevant system and task-specific metrics into a unified, easy-to-use benchmark that supports multiple inference engines, usage scenarios, and quantization levels. To address this gap, we present Bench360 -- Benchmarking Local LLM Inference from 360{\deg}. Bench360 allows users to easily define their own custom tasks along with datasets and relevant task-specific metrics and then automatically benchmarks selected LLMs, inference engines, and quantization levels across different usage scenarios (single stream, batch & server). Bench360 tracks a wide range of metrics, including (1) system metrics -- such as Computing Performance (e.g., latency, throughput), Resource Usage (e.g., energy per query), and Deployment (e.g., cold start time) -- and (2) task-specific metrics such as ROUGE, F1 score or accuracy. We demonstrate Bench360 on four common LLM tasks -- General Knowledge & Reasoning, QA, Summarization and Text-to-SQL -- across three hardware platforms and four state of the art inference engines. Our results reveal several interesting trade-offs between task performance and system-level efficiency, highlighting the differences in inference engines and models. Most importantly, there is no single best setup for local inference, which strongly motivates the need for a framework such as Bench360.
+
+
+#### cs.CL, cs.AI, cs.LG, cs.PF
+
+### [DISCA: A Digital In-memory Stochastic Computing Architecture Using A Compressed Bent-Pyramid Format](https://arxiv.org/abs/2511.17265)
+**作者**：Shady Agwa, Yikang Shen, Shiwei Wang, Themis Prodromakis
+
+Nowadays, we are witnessing an Artificial Intelligence revolution that dominates the technology landscape in various application domains, such as healthcare, robotics, automotive, security, and defense. Massive-scale AI models, which mimic the human brain's functionality, typically feature millions and even billions of parameters through data-intensive matrix multiplication tasks. While conventional Von-Neumann architectures struggle with the memory wall and the end of Moore's Law, these AI applications are migrating rapidly towards the edge, such as in robotics and unmanned aerial vehicles for surveillance, thereby adding more constraints to the hardware budget of AI architectures at the edge. Although in-memory computing has been proposed as a promising solution for the memory wall, both analog and digital in-memory computing architectures suffer from substantial degradation of the proposed benefits due to various design limitations. We propose a new digital in-memory stochastic computing architecture, DISCA, utilizing a compressed version of the quasi-stochastic Bent-Pyramid data format. DISCA inherits the same computational simplicity of analog computing, while preserving the same scalability, productivity, and reliability of digital systems. Post-layout modeling results of DISCA show an energy efficiency of 3.59 TOPS/W per bit at 500 MHz using a commercial 180nm CMOS technology. Therefore, DISCA significantly improves the energy efficiency for matrix multiplication workloads by orders of magnitude if scaled and compared to its counterpart architectures.
+
+
+#### cs.AR, cs.AI, cs.ET, cs.PF
+
+### [Sometimes Painful but Certainly Promising: Feasibility and Trade-offs of Language Model Inference at the Edge](https://arxiv.org/abs/2503.09114)
+**作者**：Maximilian Abstreiter, Sasu Tarkoma, Roberto Morabito
+
+The rapid rise of Language Models (LMs) has expanded the capabilities of natural language processing, powering applications from text generation to complex decision-making. While state-of-the-art LMs often boast hundreds of billions of parameters and are primarily deployed in data centers, recent trends show a growing focus on compact models-typically under 10 billion parameters-enabled by techniques such as quantization and other model compression techniques. This shift paves the way for LMs on edge devices, offering potential benefits such as enhanced privacy, reduced latency, and improved data sovereignty. However, the inherent complexity of even these smaller models, combined with the limited computing resources of edge hardware, raises critical questions about the practical trade-offs in executing LM inference outside the cloud. To address these challenges, we present a comprehensive evaluation of generative LM inference on representative CPU-based and GPU-accelerated edge devices. Our study measures key performance indicators-including memory usage, inference speed, and energy consumption-across various device configurations. Additionally, we examine throughput-energy trade-offs, cost considerations, and usability, alongside an assessment of qualitative model performance. While quantization helps mitigate memory overhead, it does not fully eliminate resource bottlenecks, especially for larger models. Our findings quantify the memory and energy constraints that must be considered for practical real-world deployments, offering concrete insights into the trade-offs between model size, inference performance, and efficiency. The exploration of LMs at the edge is still in its early stages. We hope this study provides a foundation for future research, guiding the refinement of models, the enhancement of inference efficiency, and the advancement of edge-centric AI systems.
+
+
+#### cs.LG, cs.AI, cs.DC, cs.PF
+
+### [Vorion: A RISC-V GPU with Hardware-Accelerated 3D Gaussian Rendering and Training](https://arxiv.org/abs/2511.16831)
+**作者**：Yipeng Wang, Mengtian Yang, Chieh-pu Lo, Jaydeep P. Kulkarni
+
+3D Gaussian Splatting (3DGS) has recently emerged as a foundational technique for real-time neural rendering, 3D scene generation, volumetric video (4D) capture. However, its rendering and training impose massive computation, making real-time rendering on edge devices and real-time 4D reconstruction on workstations currently infeasible. Given its fixed-function nature and similarity with traditional rasterization, 3DGS presents a strong case for dedicated hardware in the graphics pipeline of next-generation GPUs. This work, Vorion, presents the first GPGPU prototype with hardware-accelerated 3DGS rendering and training. Vorion features scalable architecture, minimal hardware change to traditional rasterizers, z-tiling to increase parallelism, and Gaussian/pixel-centric hybrid dataflow. We prototype the minimal system (8 SIMT cores, 2 Gaussian rasterizer) using TSMC 16nm FinFET technology, which achieves 19 FPS for rendering. The scaled design with 16 rasterizers achieves 38.6 iterations/s for training.
+
+
+#### cs.AR, cs.GR
+
+### [Layer-wise Weight Selection for Power-Efficient Neural Network Acceleration](https://arxiv.org/abs/2511.17123)
+**作者**：Jiaxun Fang, Li Zhang, Shaoyi Huang
+
+Systolic array accelerators execute CNNs with energy dominated by the switching activity of multiply accumulate (MAC) units. Although prior work exploits weight dependent MAC power for compression, existing methods often use global activation models, coarse energy proxies, or layer-agnostic policies, which limits their effectiveness on real hardware. We propose an energy aware, layer-wise compression framework that explicitly leverages MAC and layer level energy characteristics. First, we build a layer-aware MAC energy model that combines per-layer activation statistics with an MSB-Hamming distance grouping of 22-bit partial sum transitions, and integrate it with a tile-level systolic mapping to estimate convolution-layer energy. On top of this model, we introduce an energy accuracy co-optimized weight selection algorithm within quantization aware training and an energy-prioritized layer-wise schedule that compresses high energy layers more aggressively under a global accuracy constraint. Experiments on different CNN models demonstrate up to 58.6\% energy reduction with 2-3\% accuracy drop, outperforming a state-of-the-art power-aware baseline.
+
+
+#### cs.AR, cs.LG
+
+### [NX-CGRA: A Programmable Hardware Accelerator for Core Transformer Algorithms on Edge Devices](https://arxiv.org/abs/2511.17235)
+**作者**：Rohit Prasad
+
+The increasing diversity and complexity of transformer workloads at the edge present significant challenges in balancing performance, energy efficiency, and architectural flexibility. This paper introduces NX-CGRA, a programmable hardware accelerator designed to support a range of transformer inference algorithms, including both linear and non-linear functions. Unlike fixed-function accelerators optimized for narrow use cases, NX-CGRA employs a coarse-grained reconfigurable array (CGRA) architecture with software-driven programmability, enabling efficient execution across varied kernel patterns. The architecture is evaluated using representative benchmarks derived from real-world transformer models, demonstrating high overall efficiency and favorable energy-area tradeoffs across different classes of operations. These results indicate the potential of NX-CGRA as a scalable and adaptable hardware solution for edge transformer deployment under constrained power and silicon budgets.
+
+
+#### cs.AR
+
+### [MemIntelli: A Generic End-to-End Simulation Framework for Memristive Intelligent Computing](https://arxiv.org/abs/2511.17418)
+**作者**：Houji Zhou, Ling Yang, Zhiwei Zhou, Yi Li, Xiangshui Miao
+
+Memristive in-memory computing (IMC) has emerged as a promising solution for addressing the bottleneck in the Von Neumann architecture. However, the couplingbetweenthecircuitandalgorithm in IMC makes computing reliability susceptible to non-ideal effects in devices and peripheral circuits. In this respect, efficient softwarehardwareco-simulationtoolsarehighlydesiredtoembedthedevice and circuit models into the algorithms. In this paper, for the first time, we proposed an end-to-end simulation framework supporting flexible variable-precision computing, named MemIntelli, to realize the pre-verification of diverse intelligent applications on memristive devices. At the device and circuit level, mathematical functions are employed to abstract the devices and circuits through meticulous equivalent circuit modeling. On the architecture level, MemIntelli achieves flexible variable-precision IMC supporting integer and floating data representation with bit-slicing. Moreover, MemIntelli is compatible with NumPy and PyTorch for seamless integration with applications. To demonstrate its capabilities, diverse intelligent algorithms, such as equation solving, data clustering, wavelet transformation, and neural network training and inference, were employed to showcase the robust processing ability of MemIntelli. This research presents a comprehensive simulation tool that facilitates the co-design of the IMC system, spanning from device to application.
+
+
+#### cs.AR
+
+### [Cross-Layer Design of Vector-Symbolic Computing: Bridging Cognition and Brain-Inspired Hardware Acceleration](https://arxiv.org/abs/2508.14245)
+**作者**：Shuting Du, Mohamed Ibrahim, Zishen Wan, Luqi Zheng, Boheng Zhao, Zhenkun Fan, Che-Kai Liu, Tushar Krishna, Arijit Raychowdhury, Haitong Li
+
+Vector Symbolic Architectures (VSAs) have been widely deployed in various cognitive applications due to their simple and efficient operations. The widespread adoption of VSAs has, in turn, spurred the development of numerous hardware solutions aimed at optimizing their performance. Despite these advancements, a comprehensive and unified discourse on the convergence of hardware and algorithms in the context of VSAs remains somewhat limited. The paper aims to bridge the gap between theoretical software-level explorations and the development of efficient hardware architectures and emerging technology fabrics for VSAs, providing insights from the co-design aspect for researchers from either side. First, we introduce the principles of vector-symbolic computing, including its core mathematical operations and learning paradigms. Second, we provide an in-depth discussion on hardware technologies for VSAs, analyzing analog, mixed-signal, and digital circuit design styles. We compare hardware implementations of VSAs by carrying out detailed analysis of their performance characteristics and tradeoffs, allowing us to extract design guidelines for the development of arbitrary VSA formulations. Third, we discuss a methodology for cross-layer design of VSAs that identifies synergies across layers and explores key ingredients for hardware/software co-design of VSAs. Finally, as a concrete demonstration of this methodology, we propose the first in-memory computing hierarchical cognition hardware system, showcasing the efficiency, flexibility, and scalability of this co-design approach. The paper concludes with a discussion of open research challenges for future explorations.
+
+
+#### cs.AR
+
+### [LLM-DSE: Searching Accelerator Parameters with LLM Agents](https://arxiv.org/abs/2505.12188)
+**作者**：Hanyu Wang, Xinrui Wu, Zijian Ding, Su Zheng, Chengyue Wang, Neha Prakriya, Tony Nowatzki, Yizhou Sun, Jason Cong
+
+Even though high-level synthesis (HLS) tools mitigate the challenges of programming domain-specific accelerators (DSAs) by raising the abstraction level, optimizing hardware directive parameters remains a significant hurdle. Existing heuristic and learning-based methods struggle with adaptability and sample efficiency. We present LLM-DSE, a multi-agent framework designed specifically for optimizing HLS directives. Combining LLM with design space exploration (DSE), our explorer coordinates four agents: Router, Specialists, Arbitrator, and Critic. These multi-agent components interact with various tools to accelerate the optimization process. LLM-DSE leverages essential domain knowledge to identify efficient parameter combinations while maintaining adaptability through verbal learning from online interactions. Evaluations on the HLSyn dataset demonstrate that LLM-DSE achieves substantial $2.55\times$ performance gains over state-of-the-art methods, uncovering novel designs while reducing runtime. Ablation studies validate the effectiveness and necessity of the proposed agent interactions. Our code is open-sourced here: https://github.com/Nozidoali/LLM-DSE.
+
+
+#### cs.AR, cs.AI
+
+### [MicroMoE: Fine-Grained Load Balancing for Mixture-of-Experts with Token Scheduling](https://arxiv.org/abs/2511.16947)
+**作者**：Chenqi Zhao, Wenfei Wu, Linhai Song, Yuchen Xu
+
+Mixture-of-Experts (MoE) has emerged as a promising approach to scale up deep learning models due to its significant reduction in computational resources. However, the dynamic nature of MoE leads to load imbalance among experts, severely impacting training efficiency. While previous research has attempted to address the load balancing challenge, existing solutions either compromise model accuracy or introduce additional system overhead. As a result, they fail to achieve fine-grained load balancing, which is crucial to optimizing training efficiency.  We propose MicroEP, a novel parallelization strategy to achieve fine-grained load balancing in MoE systems. MicroEP is capable of achieving optimal load balancing in every micro-batch through efficient token scheduling across GPUs. Furthermore, we propose MicroMoE, an efficient distributed MoE training system with MicroEP's load balancing capabilities. Our experimental results demonstrate that MicroMoE improves the end-to-end training throughput by up to 47.6% compared with the state-of-the-art system, and almost consistently achieves optimal load balance among GPUs.
+
+
+#### cs.DC
+
+### [Modeling Anomaly Detection in Cloud Services: Analysis of the Properties that Impact Latency and Resource Consumption](https://arxiv.org/abs/2511.17119)
+**作者**：Gabriel Job Antunes Grabher (KRAKOS), Fumio Machida (KRAKOS), Thomas Ropars (KRAKOS)
+
+Detecting and resolving performance anomalies in Cloud services is crucial for maintaining desired performance objectives. Scaling actions triggered by an anomaly detector help achieve target latency at the cost of extra resource consumption. However, performance anomaly detectors make mistakes. This paper studies which characteristics of performance anomaly detection are important to optimize the trade-off between performance and cost. Using Stochastic Reward Nets, we model a Cloud service monitored by a performance anomaly detector. Using our model, we study the impact of detector characteristics, namely precision, recall and inspection frequency, on the average latency and resource consumption of the monitored service. Our results show that achieving a high precision and a high recall is not always necessary. If detection can be run frequently, a high precision is enough to obtain a good performance-to-cost trade-off, but if the detector is run infrequently, recall becomes the most important.
+
+
+#### cs.DC
+
+### [Distributed Hierarchical Machine Learning for Joint Resource Allocation and Slice Selection in In-Network Edge Systems](https://arxiv.org/abs/2511.13313)
+**作者**：Sulaiman Muhammad Rashid, Ibrahim Aliyu, Jaehyung Park, Jinsul Kim
+
+The Metaverse promises immersive, real-time experiences; however, meeting its stringent latency and resource demands remains a major challenge. Conventional optimization techniques struggle to respond effectively under dynamic edge conditions and high user loads. In this study, we explore a slice-enabled in-network edge architecture that combines computing-in-the-network (COIN) with multi-access edge computing (MEC). In addition, we formulate the joint problem of wireless and computing resource management with optimal slice selection as a mixed-integer nonlinear program (MINLP). Because solving this model online is computationally intensive, we decompose it into three sub-problems (SP1) intra-slice allocation, (SP2) inter-slice allocation, and (SP3) offloading decision and train a distributed hierarchical DeepSets-based model (DeepSets-S) on optimal solutions obtained offline. In the proposed model, we design a slack-aware normalization mechanism for a shared encoder and task-specific decoders, ensuring permutation equivariance over variable-size wireless device (WD) sets. The learned system produces near-optimal allocations with low inference time and maintains permutation equivariance over variable-size device sets. Our experimental results show that DeepSets-S attains high tolerance-based accuracies on SP1/SP2 (Acc1 = 95.26% and 95.67%) and improves multiclass offloading accuracy on SP3 (Acc = 0.7486; binary local/offload Acc = 0.8824). Compared to exact solvers, the proposed approach reduces the execution time by 86.1%, while closely tracking the optimal system cost (within 6.1% in representative regimes). Compared with baseline models, DeepSets-S consistently achieves higher cost ratios and better utilization across COIN/MEC resources.
+
+
+#### cs.DC
+
+### [Optimizing PyTorch Inference with LLM-Based Multi-Agent Systems](https://arxiv.org/abs/2511.16964)
+**作者**：Kirill Nagaitsev, Luka Grbcic, Samuel Williams, Costin Iancu
+
+Maximizing performance on available GPU hardware is an ongoing challenge for modern AI inference systems. Traditional approaches include writing custom GPU kernels and using specialized model compilers to tune high-level code for specific GPU targets. Recent work shows that LLM-based multi-agent systems can effectively perform such tuning, often outperforming existing compilers and eliminating the need for manual kernel development. However, the dynamics of multi-agent systems for this task remain unexplored. In this work, we present a logical framework for comparing multi-agent PyTorch optimization systems. Our evaluation shows that exploit-heavy strategies perform best when paired with error-fixing agents, and that performance correlates with the granularity of optimization steps. The best implementation achieves an average 2.88x speedup on an H100 GPU across diverse tasks in KernelBench, a benchmark suite covering a range of machine learning architectures in PyTorch.
+
+
+#### cs.MA, cs.AI, cs.DC
+
+### [Training Foundation Models on a Full-Stack AMD Platform: Compute, Networking, and System Design](https://arxiv.org/abs/2511.17127)
+**作者**：Quentin Anthony, Yury Tokpanov, Skyler Szot, Srivatsan Rajagopal, Praneeth Medepalli, Rishi Iyer, Vasu Shyam, Anna Golubeva, Ansh Chaurasia, Xiao Yang, Tomas Figliolia, Robert Washbourne, Drew Thorstensen, Amartey Pearson, Zack Grossbart, Jason van Patten, Emad Barsoum, Zhenyu Gu, Yao Fu, Beren Millidge
+
+We report on the first large-scale mixture-of-experts (MoE) pretraining study on pure AMD hardware, utilizing both MI300X GPUs with Pollara interconnect. We distill practical guidance for both systems and model design. On the systems side, we deliver a comprehensive cluster and networking characterization: microbenchmarks for all core collectives (all-reduce, reduce-scatter, all-gather, broadcast) across message sizes and GPU counts on Pollara. To our knowledge, this is the first at this scale. We further provide MI300X microbenchmarks on kernel sizing and memory bandwidth to inform model design. On the modeling side, we introduce and apply MI300X-aware transformer sizing rules for attention and MLP blocks and justify MoE widths that jointly optimize training throughput and inference latency. We describe our training stack in depth, including often-ignored utilities such as fault-tolerance and checkpoint-reshaping, as well as detailed information on our training recipe. We also provide a preview of our model architecture and base model - ZAYA1 (760M active, 8.3B total parameters MoE) - which will be further improved upon in forthcoming papers. ZAYA1-base achieves performance comparable to leading base models such as Qwen3-4B and Gemma3-12B at its scale and larger, and outperforms models including Llama-3-8B and OLMoE across reasoning, mathematics, and coding benchmarks. Together, these results demonstrate that the AMD hardware, network, and software stack are mature and optimized enough for competitive large-scale pretraining.
+
+
+#### cs.CL, cs.AI, cs.DC
+
+### [Valet: Efficient Data Placement on Modern SSDs](https://arxiv.org/abs/2501.00977)
+**作者**：Devashish R. Purandare, Peter Alvaro, Avani Wildani, Darrell D. E. Long, Ethan L. Miller
+
+The increasing demand for SSDs coupled with scaling difficulties has left manufacturers scrambling for newer SSD interfaces which promise better performance and durability. While these interfaces reduce the rigidity of traditional abstractions, they require application or system-level changes that can impact the stability, security, and portability of systems. To make matters worse, such changes are rendered futile with the introduction of next-generation interfaces. It is therefore no surprise that such interfaces have seen limited adoption, leaving behind a graveyard of experimental interfaces ranging from open-channel SSDs to stream SSDs.  Our solution, Valet, leverages userspace shim layers to add placement hints for application data, delivering up to 2-4x write throughput over filesystems and comparable or better performance than application-specific solutions, with up to 6x lower tail latency. Valet generates dynamic placement hints, remapping application data to modern SSDs with zero modifications to the application, the filesystem, or the kernel. We demonstrate performance, efficiency, and multi-tenancy benefits of Valet across a set of widely-used applications: RocksDB, MongoDB, and CacheLib, presenting a solution that combines the performance of application-specific solutions with wide applicability to log-structured data-intensive applications.
+
+
+#### cs.OS, cs.ET
